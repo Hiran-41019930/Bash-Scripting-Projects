@@ -1,0 +1,98 @@
+  1 #! /bin/bash
+  2 
+  3 #student name: Dadallage Samarasinghe
+  4 #student number: 041019930
+  5 #course: CET
+  6 #section: 302
+  7 #Description: A script that will calculate the final grade and display the letter grade for a course. Use only integers for input.
+  8 
+  9 
+ 10 #get inputs
+ 11 read -p "Enter Assignment mark(0-40): " num
+ 12 
+ 13 if [[ $num -ge 0 ]] && [[ $num -le 40 ]]
+ 14 then
+ 15          echo
+ 16 else
+ 17         echo "input exceeded the range limit"
+ 18 fi
+ 19 
+ 20 read -p "Enter Test 1 mark(0-15): " num1
+ 21 
+ 22 if [[ $num1 -ge 0 ]] && [[ $num1 -le 15 ]]
+ 23 then
+ 24         echo
+ 25 else
+ 26         echo "input exceeded the range limit"
+ 27 fi
+ 28 
+ 29 read -p "Enter Test 2 mark(0-15): " num2
+ 30 
+ 31 if [[ $num2 -ge 0 ]] && [[ $num2 -le 15 ]]
+ 32 then
+ 33         echo
+ 34 else
+ 35         echo "input exceeded the range limit"
+ 36 fi
+ 37 
+ 38 read -p "Enter Final exam mark(0-30): " num3
+ 39 
+ 40 if [[ $num3 -ge 0 ]] && [[ $num3 -le 30 ]]
+ 41 then
+ 42          echo
+ 43 else
+ 44          echo "input exceeded the range limit"
+ 45 fi
+ 46 
+ 47 
+ 48 #Final grade numeric value Calculation
+ 49 
+ 50 ((count=$num+$num1+$num2+$num3))
+ 51 
+ 52 echo "Your final numeric grade is $count, and your final letter grade is "
+ 53 
+ 54 
+ 55 #Letter grade Calculation
+ 56 
+ 57 if [[ $count -ge 90 ]] && [[ $count -le 100 ]]
+ 58 then
+ 59         echo "A+"
+ 60 elif [[ $count -ge 85 ]] && [[ $count -le 89 ]]
+ 61 then
+ 62         echo "A"
+ 63 elif [[ $count -ge 80 ]] && [[ $count -le 84 ]]
+ 64 then
+ 65         echo "A-"
+ 66 elif [[ $count -ge 77 ]] && [[ $count -le 79 ]]
+ 67 then
+ 68         echo "B+"
+ 69 elif [[ $count -ge 73 ]] && [[ $count -le 76 ]]
+ 70 then
+ 71         echo "B"
+ 72 elif [[ $count -ge 70 ]] && [[ $count -le 72 ]]
+ 73 then
+ 74         echo "B-"
+ 75 elif [[ $count -ge 67 ]] && [[ $count -le 69 ]]
+ 76 then
+ 77         echo "C+"
+ 78 elif [[ $count -ge 63 ]] && [[ $count -le 66 ]]
+ 79 then
+ 80         echo "C"
+ 81 elif [[ $count -ge 60 ]] && [[ $count -le 62 ]]
+ 82 then
+ 83         echo "C-"
+ 84 elif [[ $count -ge 57 ]] && [[ $count -le 59 ]]
+ 85 then
+ 86         echo "D+"
+ 87 elif [[ $count -ge 53 ]] && [[ $count -le 56 ]]
+ 88 then
+ 89         echo "D"
+ 90 elif [[ $count -ge 50 ]] && [[ $count -le 52 ]]
+ 91 then
+ 92         echo "D-"
+ 93 elif [[ $count -ge 0 ]] && [[ $count -le 49 ]]
+ 94 then
+ 95         echo "F"
+ 96 else
+ 97         echo "Invalid Input! Try again!"
+ 98 fi
