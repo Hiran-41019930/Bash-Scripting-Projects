@@ -1,0 +1,89 @@
+  1 #! /bin/bash
+  2 
+  3 #assignment number: 2
+  4 #student name: Dadallage Samarasinghe
+  5 #student number: 041019930
+  6 #course: CET
+  7 #section: 302
+  8 #name of the script file: lect8
+  9 #submission date: 04/08/2021
+ 10 #description: A script file for the purpose of user and group management in linux.
+ 11 
+ 12 stop=y
+ 13 
+ 14 while [[ $stop != "Q" ]] && [[ $stop != "q" ]]
+ 15 do
+ 16 
+ 17         echo "Choose one of the following options: "
+ 18         echo "A Create a user account"
+ 19         echo "B Delete a user account"
+ 20         echo "C Change supplementary group for a user account"
+ 21         echo "D Change intial group for a user account"
+ 22         echo "E Change default login shell for a user account"
+ 23         echo "F Change account expiration date for a user account"
+ 24         echo "Q Quit"
+ 25 
+ 26         read -p "What would you like to do?:" choice
+ 27 
+ 28         if [[ $choice = "A" ]] || [[ $choice = "a" ]]
+ 29         then
+ 30                 read -p "Username: " name
+ 31                 $sudo useradd -m $name
+ 32 
+ 33                 read -p "User's Home Directory: " homedir
+ 34                 if [ x"$homedir" = "x" ]; then
+ 35                 homedir="/home/$name"
+ 36                 fi
+ 37 
+ 38                 read -p "Default login Shell: " bash
+ 39                 if [ x"$bash" = "x" ]; then
+ 40                 bash="/bin/bash"
+ 41                 fi
+ 42 
+ 43 
+ 44         elif [[ $choice = "B" ]] || [[ $choice = "b" ]]
+ 45         then
+ 46 
+ 47                 read -p "Username: " name
+ 48                 userdel -r $name
+ 49                 echo "User $name has been deleted"
+ 50 
+ 51         elif [[ $choice = "C" ]] || [[ $choice = "c" ]]
+ 52         then
+ 53                 read -p "Username: " name
+ 54                 read -p "Enter current group name: " cgroup
+ 55                 read -p "Enter destination group name: " dgroup
+ 56                 usermod -G $cgroup,$dgroup $name
+ 57 
+ 58         elif [[ $choice = "D" ]] || [[ $choice = "d" ]]
+ 59         then
+ 60                 read -p "Username: " name
+ 61                 read -p "Enter group name: " igroup
+ 62                 usermod -g $igroup $name
+ 63 
+ 64         elif [[ $choice = "E" ]] || [[ $choice = "e" ]]
+ 65         then
+ 66                 read -p "Username: " name
+ 67                 read -p "Enter shell name: " sName
+ 68                 chsh -s $sName $name
+ 69 
+ 70         elif [[ $choice = "F" ]] || [[ $choice = "f" ]]
+ 71         then
+ 72                 read -p "Username: " name
+ 73                 read -p "Enter the New Expiration Date in (YYYY-MM-DD)format: " fdate
+ 74                 usermod -e $fdate $name
+ 75 
+ 76         elif [[ $choice = "Q" ]] || [[ $choice = "q" ]]
+ 77         then
+ 78                 echo "Thank you! Have a great day!!!"   
+ 79                 exit 1
+ 80         else
+ 81                 echo "Wrong choice entered... Please try again!!!"
+ 82 
+ 83         fi
+ 84 
+ 85                 clear
+ 86                 sleep 3
+ 87 
+ 88 done
+ 89 echo "Finished "

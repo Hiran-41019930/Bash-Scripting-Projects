@@ -1,0 +1,158 @@
+  1 #! /bin/bash
+  2 
+  3 #assignment number: 3
+  4 #student name: Dadallage Samarasinghe
+  5 #student number: 041019930
+  6 #course: CET
+  7 #section: 302
+  8 #name of the script file: lect9
+  9 #submission date: 11/08/2021
+ 10 #description: A script file for the purpose of supporting two modes of operation, either with no parameters or with three parameters. If the incorre    ct number of parameters is provided, the script should output an error and quit.
+ 11 
+ 12 
+ 13 add () {
+ 14         sum=$(( $1 + $3 ))
+ 15        echo "The sum of "$1" plus "$3" equals "$sum     
+ 16 }
+ 17 
+ 18 subtract () {
+ 19         sum=$(( $1 - $3 ))
+ 20         echo "The subtract of "$1" minus "$3" equals "$sum
+ 21 }
+ 22 
+ 23          if [[ $# -eq 3 ]]
+ 24           then
+ 25           if [[ $2 = + ]]
+ 26           then
+ 27           add $1 $2 $3
+ 28           elif [[ $2 = - ]]
+ 29           then
+ 30           subtract $1 $2 $3
+ 31           else
+ 32           echo "Wrong inputt entered for second parameter!!! Please try again!"
+ 33           fi
+ 34           exit 1
+ 35           clear
+ 36         fi
+ 37 
+ 38 
+ 39 stop=y
+ 40 
+ 41 while [[ $stop != "X" ]] && [[ $stop != "x" ]]
+ 42 do
+ 43         if [[ $# -eq 0 ]]
+ 44         then
+ 45 
+ 46         echo "Choose one of the following options: "
+ 47         echo "1. Enter three parameters: "
+ 48         echo "2. Continue with parameters: "
+ 49         echo "X Quit"
+ 50 
+ 51         read -p "What is your option?: " option
+ 52         if [[ $option = 1 ]]
+ 53         then
+ 54                 read -p "Enter Number 1: " num1
+ 55                 read -p "Enter the Operation(+,-): " funct
+ 56                 read -p "Enter Number 2: " num2
+ 57                 if [ $funct = + ]
+ 58                 then
+ 59                         add $num1 $funct $num2
+ 60                         
+ 61 
+ 62                 sleep 3
+ 63                 clear
+ 64                 elif [ $funct = - ]
+ 65                 then
+ 66                          subtract $num1 $funct $num2
+ 67                          
+ 68 
+ 69                 sleep 3
+ 70                 clear
+ 71                 else
+ 72                         echo "Wrong input type Entered! Try again!!"
+ 73 
+ 74                 fi
+ 75 
+ 76 
+ 77         elif [[ $option = 2 ]]
+ 78                 then
+ 79                 echo "Menu 1"
+ 80                 echo "C) Calculation"
+ 81                 echo "X) Exit"
+ 82                 read -p "Choose your option: " calc
+ 83 
+ 84                         if [ $calc = "C" ] || [ $calc = "c" ]
+ 85                         then
+ 86                         clear
+ 87                         echo "Menu 2"
+ 88                         read -p "Please enter an integer number or X to exit: " num3
+ 89 
+ 90                                 if [ $num3 -ge 0 ]
+ 91                                 then
+ 92                                 clear
+ 93                                 echo "Menu 3"
+ 94                                 echo "+) Add"
+ 95                                 echo "-) Subtract"
+ 96                                 echo "X) Exit"
+ 97                                 read -p "Choose your option: " choice
+ 98 
+ 99                                         if [ $choice = + ]
+100                                         then
+101                                         clear
+102                                         echo "Menu 2"
+103                                         read -p "Please enter an integer number or X to exit:" num4
+104                                         ((count3=$num3+$num4))
+105                                         echo "$count3"
+106                                         sleep 3
+107                                         clear
+108 
+109                                         elif [ $choice = - ]
+110                                         then
+111                                         clear
+112                                         echo "Menu 2"
+113                                         read -p "Please enter an integer number or X to exit:" num4
+114                                         ((count4=$num3-$num4))
+115                                         echo "$count4"
+116                                         sleep 3
+117                                         clear
+118 
+119                                         elif [ $choice = "X" ] || [ $choice = "x" ]
+120                                         then
+121                                         echo "Thank you for using Calculator! Have a great day!!!"
+122                                         exit 1
+123                                         clear
+124                                         else
+125                                         echo "Wrong input type!!"
+126                                         fi
+127 
+128                                 elif [ $num3 = "X" ] || [ $num3 = "x" ]
+129                                 then
+130                                 echo "Thank you for using Calculator! Have a great day!!!"
+131                                 exit 1
+132                                 clear
+133                                 else
+134                                 echo "Wrong input type!!"
+135                                 fi
+136                         elif [ $calc = "X" ] || [ $calc = "x" ]
+137                         then
+138                         echo "Thank you for using Calculator! Have a great day!!!"
+139                         exit 1
+140                         clear
+141                         else
+142                         echo "Wrong input type!!"
+143                         fi
+144 
+145 
+146         elif [[ $option = "X" ]] || [[ $option = "x" ]]
+147         then
+148                 echo "Thank you for using Calculator! Have a great day!!!"
+149                 exit 1
+150                 clear
+151         else
+152                 echo "Wrong option entered... Please try again!!!"
+153         fi
+154          fi
+155 done
+156 echo "finished"
+
+
